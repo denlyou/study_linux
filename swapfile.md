@@ -14,15 +14,16 @@ free -h
 - `dd` 명령으로 스왑으로 사용할 파일을 생성합니다
 
 ```shell
-dd if=/dev/zero of=/mnt/swapfile bs=1024 count=1048576
+dd if=/dev/zero of=/var/swapfile bs=1024 count=1024KB
 ```
 
 
 - 스왑 파일 등록 및 사용하도록 설정합니다.
 
 ```shell
-mkswap -v1 /mnt/swapfile
-swapon /mnt/swapfile
+mkswap -v1 /var/swapfile
+chmod 600 /var/swapfile
+swapon /var/swapfile
 ```
 
 - 정상정으로 동작하는지 확인 합니다
@@ -34,7 +35,7 @@ free -h
 - 재부팅시 자동으로 동작하도록 설정하기 : 편집기로 /ect/fstab 파일을 열고 다음을 추가합니다.
 
 ```shell
-/mnt/swapfile     swap     swap    defaults    1 1
+/var/swapfile     swap     swap    defaults    1 1
 ```
 ** 주의 : 이 파일을 잘못 설정하면 부팅시 오류가 생길수 있으니 주의할 것 **
 
@@ -43,11 +44,11 @@ free -h
 - 스왑 파일 해제하기
 
 ```shell
-swapoff /mnt/swapfile
+swapoff /var/swapfile
 ```
 
 - 스왑 파일 삭제하기
 
 ```
-rm -f /mnt/swapfile
+rm -f /var/swapfile
 ```
