@@ -4,7 +4,7 @@
 ## 내용
 
 - [swapfile설정 (환경 ubuntu14)](./swapfile.md)
-- to be continude
+- [crontab사용 방법](./crontab.md)
 
 ### update 예정사항
 
